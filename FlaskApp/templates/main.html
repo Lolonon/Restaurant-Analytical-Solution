@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+	
+
+
+</header>
+
+<body>
+
+	<div class="border-row" style="width:100%; margin-bottom: 15px;"></div>
+	
+	<div class="container-fluid" align="center" style="min-height: :100%; margin-bottom: 15px;">
+	{% block body %} {% endblock%}
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>

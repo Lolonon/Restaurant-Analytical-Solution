@@ -1,0 +1,59 @@
+<!-- index.html -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.4/d3.layout.cloud.js"></script>
+
+
+<div style="font-size:30px;color:blue">Those customers like customer {{user_id}} are highly likely choose restaurants {{rest_base}}<br><br/></div>
+<div style="font-size:30px;color:red">Restaurants {{rest_rec}} are recommended to you based on the baseline restaurants<br><br/></div>
+
+
+<div style="font-size:20px;color:black;font-weight: bold">Baseline</div>
+<div>
+    {{table_baseline}}<br><br/>
+</div>
+
+<div style="font-size:20px;color:black;font-weight: bold">Recommendation</div>
+<div style="font-size:20px">
+    {{table_rec}}<br><br/>
+</div> 
+
+<div style="font-size:30px;color:black;font-weight: bold">Reason for Recommendation</div>
+
+<div>
+<script>
+  var word_freqs = {{ word_freqs|safe }};
+  max_freq = {{ max_freq }};
+  fill = d3.scale.category20();
+  layout = d3.layout.cloud()
+      .size([1000, 500])
+      .words(word_freqs)
+      .padding(5)
+      .rotate(0)
+      .font("Impact")
+      .fontSize(function(d) {
+         return (d.size/max_freq)*100;
+      })
+      .on("end", draw);
+  layout.start();
+  function draw(words) {
+    d3.select("body").append("svg")
+      .attr("width", layout.size()[0])
+      .attr("height", layout.size()[1])
+      .attr("style", "display: block; margin-left: auto; margin-right: auto; background: white; text-align: center;")
+      .append("g")
+      .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+      .selectAll("text")
+      .data(words)
+      .enter().append("text")
+      .style("font-size", function(d) { return d.size + "px"; })
+      .style("font-family", "Impact")
+      .style("fill", function(d, i) { return fill(i); })
+      .attr("text-anchor", "middle")
+      .attr("transform", function(d) {
+        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+      })
+      .text(function(d) { return d.text; });
+  }
+</script>
+</div>
+<a href="/dashboard/" class="btn btn-danger" style="font-size:30px;color:blue;font-weight: bold">Back</a>

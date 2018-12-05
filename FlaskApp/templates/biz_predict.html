@@ -1,0 +1,44 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="jumbotron" style="background-color:#1daeff !important;">
+    <h2 style="color:#fff;font-size:70px">Restaurant Rating Prediction</h2>      
+    <p style="color:#fff;font-size:30px">Use machine learning to predict restaurant overall rating</p>
+  </div>
+  <p style="font-size:20px;color:black;font-weight: bold">Restaurant Rating Prediction_wangweishi_version_1.</p>           
+</div>
+
+<div class="card text-center">
+  <div class="card-header" style="font-size:20px;color:black;font-weight: bold">
+    Results
+  </div>
+  <div class="card-body" style="background-color:#1daeff">
+    <h5 class="card-title"></h5>
+    <hr/>
+    <p class="card-text"><div class="alert alert-danger" role="alert" style="font-size:20px;font-weight: bold">
+  Restaurant ID is: {{ rest_id }}
+</div></p>
+
+    <p class="card-text"><div class="alert alert-danger" role="alert" style="font-size:20px;font-weight: bold">
+  Restaurant {{name}} averaged rating is predicted as {{prediction}} and its actual rating is {{actual_rating}}, error is {{error}}
+</div></p>
+    <a href="/dashboard/" class="btn btn-danger" style="font-weight: bold">Back</a>
+
+
+<!-- Main ML Prediction Display Ends Here -->
+  <div class="card-footer text-muted">
+   
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}

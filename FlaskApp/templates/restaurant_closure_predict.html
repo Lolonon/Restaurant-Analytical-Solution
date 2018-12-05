@@ -1,0 +1,52 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="jumbotron" style="background-color:#1daeff !important;">
+    <h2 style="color:#fff;font-size:70px">Restaurant Permanent Closure Prediction</h2>      
+    <p style="color:#fff;font-size:30px">Use machine learning to predict restaurant closure</p>
+  </div>
+  <p style="font-size:20px;color:black;font-weight: bold">Restaurant Closure Prediction_wangweishi_version_1.</p>           
+</div>
+
+<div class="card text-center">
+  <div class="card-header" style="font-size:20px;color:black;font-weight: bold">
+    Results
+  </div>
+  <div class="card-body" style="background-color:#1daeff;">
+    <h5 class="card-title"></h5>
+    <hr/>
+    <p class="card-text"><div class="alert alert-danger" role="alert" style="font-size:20px;font-weight: bold">
+  Restaurant ID is: {{ rest_id }}
+</div></p>
+
+    {% if prediction ==  0 %}
+    <p class="card-text"><div class="alert alert-danger" role="alert" style="font-size:20px;font-weight: bold">
+  Restaurant {{name}} Business Will Shutdown in next 2 years
+</div></p>
+    <a href="/dashboard/" class="btn btn-danger" style="font-weight: bold">Closure</a>
+     {% elif prediction == 1 %}
+  <p class="card-text"><div class="alert alert-danger" role="alert" style="font-size:20px;font-weight: bold">
+  Restaurant {{name}} Business Will Still in Operation in next 2 years
+</div></p>
+    <a href="/dashboard/" class="btn btn-primary" style="font-weight: bold">In Operation</a>
+    {% endif%}
+  </div>
+
+
+<!-- Main ML Prediction Display Ends Here -->
+  <div class="card-footer text-muted">
+   
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}

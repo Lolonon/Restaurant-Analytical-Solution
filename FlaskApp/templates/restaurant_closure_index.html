@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron" style="background-color:#1daeff !important;">
+    <h2 style="color:#fff;font-size:70px">Restaurant Permanent Closure Prediction</h2>      
+    <p style="color:#fff;font-size:30px">Use machine learning to predict restaurant closure </p>
+  </div>
+  </div>
+  <p style="font-size:20px;color:black;font-weight: bold">Restaurant Closure Prediction_wangweishi_version_1.</p>           
+</div>
+
+
+<div class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading" style="background-color:#1563ff; font-size:20px; font-weight: bold">Restaurant Closure Forecaster</div>
+      <div class="panel-body">
+      
+<!-- Main Input For Receiving Query to our ML --> 
+        <form action="{{ url_for('restaurant_closure_predict')}}" method="POST">
+      <input type="text" name="namequery">
+      <button type="submit" class="btn btn-primary" >Predict</button>
+      </form>
+
+<!-- Main Input For Receiving Query to our ML --> 
+
+
+      </div>
+    </div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6enNIkgbUGB0_9vf_7XHTn7iGhfoaS1aO0Ot8k624pzVG3HoA_g" alt="Colaborative Filtering" style="width:600px;height:300px;">
+
+
+{% endblock %}
+
+{% block styles %}
+{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}

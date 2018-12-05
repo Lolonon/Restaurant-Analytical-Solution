@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+
+{% block body %}
+
+<div role="tabpanel">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQEj-1TU6ue5w7yMZc3Z_LripKv6J2LKbsEEKmgVi8Ws9qa1Wk" alt="Confusing" style="width:500px;height:300px;">
+  <!-- Nav tabs -->
+<!--   <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#basics" aria-controls="basics" role="tab" data-toggle="tab">Basics</a></li>
+    <li role="presentation"><a href="#wdev" aria-controls="wdev" role="tab" data-toggle="tab">Web Dev</a></li>
+    <li role="presentation"><a href="#dan" aria-controls="dan" role="tab" data-toggle="tab">Data Analysis</a></li>
+
+  </ul> -->
+
+  <!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="basics">
+	  <ul>
+        {% for t in TOPIC_DICT["Basics"] %}
+          <li style="font-size:30px"><a href="{{t[1]}}">{{t[0]}}</a></li>
+        {% endfor %}
+	  </ul>
+  </div>
+  
+  <div role="tabpanel" class="tab-pane fade" id="wdev" style="font-size:30px">Flask_APP_wangweishi_version_1 </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="dan" style="font-size:30px">Data Science & Data Analytics</div>
+
+</div>
+
+</div>
+
+{% endblock %}
